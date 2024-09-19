@@ -1,15 +1,17 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainPage from "../pages/MainPage/MainPage";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MainPage from '../pages/MainPage/MainPage';
+import { ROUTE_PATH } from '../common/consts/routes';
+import AddHistoryPage from '../pages/AddHistoryPage/AddHistoryPage';
 
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: ROUTE_PATH.HOME,
       element: <MainPage />,
     },
     {
-      path: "about",
-      element: <div>About</div>,
+      path: ROUTE_PATH.ADD_HISTORY,
+      element: <AddHistoryPage />,
     },
   ]);
 

@@ -1,12 +1,15 @@
-import { PropsWithChildren } from "react";
-import BottomNavigator from "../../components/BottomNavigator/BottomNavigator";
+import { PropsWithChildren } from 'react';
+import { Layout } from 'antd';
+import { Content } from 'antd/es/layout/layout';
+import { NAVIGATOR_HEIGHT } from '../../styles/consts';
+import NavigatorBar from '../../components/NavigatorBar/NavigatorBar';
 
 const BasePageContainer = ({ children }: PropsWithChildren) => {
   return (
-    <div className="flex flex-1 justify-center align-middle max-w-[640px]">
-      {children}
-      <BottomNavigator />
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Content style={{ height: `calc(100% - ${NAVIGATOR_HEIGHT})`, overflow: 'auto', position: 'relative' }}>{children}</Content>
+      <NavigatorBar />
+    </Layout>
   );
 };
 
