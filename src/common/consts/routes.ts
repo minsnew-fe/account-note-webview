@@ -1,4 +1,5 @@
 export const ROUTE_PATH = {
-  HOME: "/",
-  ADD_HISTORY: "/add-history",
+  HOME: '/',
+  ACCOUNT_LIST: '/accounts',
+  ADD_HISTORY: '/add-history',
 };
