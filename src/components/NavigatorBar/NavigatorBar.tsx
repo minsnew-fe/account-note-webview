@@ -8,8 +8,10 @@ const NavigatorBar = () => {
 
   return (
     <Flex style={{ padding: 0, height: NAVIGATOR_HEIGHT }}>
-      {NAVIGATOR_MENUS.map((menu) => (
-        <Button style={{ backgroundColor: pathname === menu.to ? 'red' : 'inherit' }}>{menu.icon}</Button>
+      {NAVIGATOR_MENUS.map((menu, index) => (
+        <Button key={index} style={{ backgroundColor: pathname === menu.to ? 'red' : 'inherit' }}>
+          {menu.icon}
+        </Button>
       ))}
     </Flex>
   );
