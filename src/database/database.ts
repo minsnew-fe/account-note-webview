@@ -17,6 +17,12 @@ class DatabaseService {
 
   constructor() {}
 
+  public static initialize() {
+    console.log('init database');
+    const app = initializeApp(firebaseConfig);
+    this.instance = getDatabase(app);
+  }
+
   public static getInstance() {
     if (this.instance === null) {
       const app = initializeApp(firebaseConfig);
