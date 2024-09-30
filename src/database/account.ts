@@ -13,6 +13,17 @@ export const postAccount = async (id: string, account: Account): Promise<void> =
   }
 };
 
+export const isValidAccountName = async (name: string): Promise<boolean> => {
+  const database = DatabaseService.getInstance();
+
+  try {
+    const snaps = await get(ref(database, `${DATABASE_PATH.ACCOUNTS}?name=${name}`));
+    return !snaps.val();
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export const getAccounts = async (): Promise<Account[]> => {
   const database = DatabaseService.getInstance();
 
@@ -30,11 +41,11 @@ export const getAccounts = async (): Promise<Account[]> => {
   }
 };
 
-export const getAccount = async (): Promise<Account> => {
+export const getAccount = async (id: string): Promise<Account> => {
   const database = DatabaseService.getInstance();
 
   try {
-    const snaps = await get(ref(database, DATABASE_PATH.ACCOUNTS));
+    const snaps = await get(ref(database, `${DATABASE_PATH.ACCOUNTS}/${id}`));
 
     return snaps.val();
   } catch (error) {
