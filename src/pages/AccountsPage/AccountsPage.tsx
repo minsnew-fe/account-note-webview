@@ -2,6 +2,7 @@ import { Flex, Layout } from 'antd';
 import { useEffect, useState } from 'react';
 import { Account } from '../../common/models/account';
 import { getAccounts } from '../../database/account';
+import AccountList from './shared/AccountList/AccountList';
 
 const AccountsPage = () => {
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -22,15 +23,7 @@ const AccountsPage = () => {
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      {accounts.length === 0 ? (
-        <Flex>등록된 정보가 없습니다.</Flex>
-      ) : (
-        <Flex>
-          {accounts.map((account) => (
-            <Flex key={account.id}>{account.name}</Flex>
-          ))}
-        </Flex>
-      )}
+      {accounts.length === 0 ? <Flex>등록된 정보가 없습니다.</Flex> : <AccountList accounts={accounts} />}
     </Layout>
   );
 };
