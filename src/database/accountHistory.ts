@@ -1,4 +1,4 @@
-import { get, ref, set } from 'firebase/database';
+import { get, ref, remove, set } from 'firebase/database';
 import DatabaseService from './database';
 import { History } from '../common/models/history';
 import { generateDbId } from '../utils/database';
@@ -40,6 +40,16 @@ export const getHistory = async (id: string): Promise<History> => {
     const snaps = await get(ref(database, `${DATABASE_PATH.HISTORIES}/${id}`));
 
     return snaps.val();
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const removeHistory = async (id: string): Promise<void> => {
+  const database = DatabaseService.getInstance();
+
+  try {
+    await remove(ref(database, `${DATABASE_PATH.HISTORIES}/${id}`));
   } catch (error) {
     return Promise.reject(error);
   }

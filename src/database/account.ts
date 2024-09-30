@@ -1,4 +1,4 @@
-import { get, ref, set } from 'firebase/database';
+import { get, ref, remove, set } from 'firebase/database';
 import DatabaseService from './database';
 import { Account } from '../common/models/account';
 import { DATABASE_PATH } from './consts';
@@ -48,6 +48,16 @@ export const getAccount = async (id: string): Promise<Account> => {
     const snaps = await get(ref(database, `${DATABASE_PATH.ACCOUNTS}/${id}`));
 
     return snaps.val();
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const removeAccount = async (id: string): Promise<void> => {
+  const database = DatabaseService.getInstance();
+
+  try {
+    await remove(ref(database, `${DATABASE_PATH.ACCOUNTS}/${id}`));
   } catch (error) {
     return Promise.reject(error);
   }
