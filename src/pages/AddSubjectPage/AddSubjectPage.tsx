@@ -1,15 +1,15 @@
 import { Button, Flex, Input, Layout, Typography } from 'antd';
-import { Account } from '../../common/models/account';
+import { Subject } from '../../common/models/subject';
 import { Controller, useForm } from 'react-hook-form';
-import { isValidAccountName, postAccount } from '../../database/account';
+import { isValidSubjectName, postSubject } from '../../database/subject';
 import { generateDbId } from '../../utils/database';
 
-interface RegisterAccount extends Omit<Account, 'id' | 'isActivate'> {
+interface RegisterSubject extends Omit<Subject, 'id' | 'isActivate'> {
   isValid: boolean;
 }
 
-const AddAccountPage = () => {
-  const { control, handleSubmit, setValue, watch } = useForm<RegisterAccount>({
+const AddSubjectPage = () => {
+  const { control, handleSubmit, setValue, watch } = useForm<RegisterSubject>({
     defaultValues: { name: '', description: '', isValid: false },
   });
 
@@ -17,17 +17,17 @@ const AddAccountPage = () => {
 
   const handleCheckIsValidName = async () => {
     try {
-      const isValid = await isValidAccountName(name);
+      const isValid = await isValidSubjectName(name);
       setValue('isValid', isValid);
     } catch (error) {
       console.error('failed to check valid name', error);
     }
   };
 
-  const onSubmit = async (values: RegisterAccount) => {
+  const onSubmit = async (values: RegisterSubject) => {
     const id = generateDbId();
 
-    const account: Account = {
+    const subject: Subject = {
       id,
       name: values.name,
       description: values.description,
@@ -35,9 +35,9 @@ const AddAccountPage = () => {
     };
 
     try {
-      await postAccount(id, account);
+      await postSubject(id, subject);
     } catch (error) {
-      console.error('failed to post account', error);
+      console.error('failed to post subject', error);
     }
   };
 
@@ -60,4 +60,4 @@ const AddAccountPage = () => {
   );
 };
 
-export default AddAccountPage;
+export default AddSubjectPage;

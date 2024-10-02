@@ -1,6 +1,6 @@
 export const ROUTE_PATH = {
   HOME: '/',
-  ACCOUNTS: '/accounts',
-  ADD_ACCOUNT: '/add-account',
+  SUBJECTS: '/subjects',
+  ADD_SUBJECT: '/add-subject',
   ADD_HISTORY: '/add-history',
 };

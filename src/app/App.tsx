@@ -4,8 +4,8 @@ import { ROUTE_PATH } from '../common/consts/routes';
 import AddHistoryPage from '../pages/AddHistoryPage/AddHistoryPage';
 import { useEffect } from 'react';
 import DatabaseService from '../database/database';
-import AccountsPage from '../pages/AccountsPage/AccountsPage';
-import AddAccountPage from '../pages/AddAccountPage/AddAccountPage';
+import SubjectsPage from '../pages/SubjectsPage/SubjectsPage';
+import AddAccountPage from '../pages/AddSubjectPage/AddSubjectPage';
 
 const App = () => {
   useEffect(() => {
@@ -18,11 +18,11 @@ const App = () => {
       element: <MainPage />,
     },
     {
-      path: ROUTE_PATH.ACCOUNTS,
-      element: <AccountsPage />,
+      path: ROUTE_PATH.SUBJECTS,
+      element: <SubjectsPage />,
     },
     {
-      path: ROUTE_PATH.ADD_ACCOUNT,
+      path: ROUTE_PATH.ADD_SUBJECT,
       element: <AddAccountPage />,
     },
     {
