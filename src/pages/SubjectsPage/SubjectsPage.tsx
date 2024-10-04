@@ -4,6 +4,7 @@ import { Subject } from '../../common/models/subject';
 import { getSubjects } from '../../database/subject';
 import SubjectList from './shared/SubjectList/SubjectList';
 import AppBar from '../../components/AppBar/AppBar';
+import AddSubjectButton from './shared/AddSubjectButton/AddSubjectButton';
 
 const SubjectsPage = () => {
   const [subjects, setSubjects] = useState<Subject[]>([]);
@@ -27,8 +28,9 @@ const SubjectsPage = () => {
       <AppBar title='폴더 목록' />
       <Flex style={{ height: 'calc(100% - 48px)', padding: '16px 0' }} justify='center' align='center'>
         {subjects.length === 0 ? (
-          <Flex>
-            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description='등록된 정보가 없습니다.' />
+          <Flex vertical>
+            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description='등록된 폴더가 없습니다.' />
+            <AddSubjectButton />
           </Flex>
         ) : (
           <SubjectList subjects={subjects} />
