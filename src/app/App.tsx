@@ -1,5 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MainPage from '../pages/MainPage/MainPage';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { ROUTE_PATH } from '../common/consts/routes';
 import AddHistoryPage from '../pages/AddHistoryPage/AddHistoryPage';
 import { useEffect } from 'react';
@@ -15,7 +14,9 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: ROUTE_PATH.HOME,
-      element: <MainPage />,
+      element: <Navigate to={ROUTE_PATH.SUBJECTS} />,
+      // TODO: 추후 root path를 로그인 페이지로 활용 예정
+      // element: <MainPage />,
     },
     {
       path: ROUTE_PATH.SUBJECTS,
