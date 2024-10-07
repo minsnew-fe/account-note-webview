@@ -13,8 +13,8 @@ const Actions = ({ submitButtonText, extraControl, onSubmit }: ActionsProps) => 
   };
 
   return (
-    <Flex>
-      <Flex justify='flex-end'>
+    <Flex justify='flex-end' style={{ flex: 1, margin: '12px' }}>
+      <Flex>
         {extraControl && <Flex>{extraControl}</Flex>}
         <Button onClick={handleClick}>{submitButtonText ?? '저장'}</Button>
       </Flex>

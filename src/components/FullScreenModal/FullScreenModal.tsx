@@ -10,7 +10,7 @@ const FullScreenModal = ({ children, opened }: PropsWithChildren<{ opened: boole
     <Portal>
       {opened && (
         <Flex style={{ position: 'fixed', top: 0, left: 0, backgroundColor: 'white', width: '100vw', height: '100vh' }}>
-          <Flex style={{ flex: 1 }} vertical>
+          <Flex style={{ flex: 1, margin: '12px 8px' }} vertical>
             {children}
           </Flex>
         </Flex>
