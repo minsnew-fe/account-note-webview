@@ -3,6 +3,7 @@ import { Subject } from '../../common/models/subject';
 import { Controller, useForm } from 'react-hook-form';
 import { isValidSubjectName, postSubject } from '../../database/subject';
 import { generateDbId } from '../../utils/database';
+import { isEmpty } from '../../utils/string';
 
 interface RegisterSubject extends Omit<Subject, 'id' | 'isActivate'> {
   isValid: boolean;
@@ -25,12 +26,16 @@ const AddSubjectPage = () => {
   };
 
   const onSubmit = async (values: RegisterSubject) => {
+    const { name, description } = values;
+
+    if (isEmpty(name)) return;
+
     const id = generateDbId();
 
     const subject: Subject = {
       id,
-      name: values.name,
-      description: values.description,
+      name: name,
+      description: description,
       isActivate: true,
     };
 
