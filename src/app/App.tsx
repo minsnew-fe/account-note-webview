@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import DatabaseService from '../database/database';
 import SubjectsPage from '../pages/SubjectsPage/SubjectsPage';
 import AddAccountPage from '../pages/AddSubjectPage/AddSubjectPage';
+import { App as AntdApp } from 'antd';
 
 const App = () => {
   useEffect(() => {
@@ -32,7 +33,11 @@ const App = () => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <AntdApp>
+      <RouterProvider router={router} />;
+    </AntdApp>
+  );
 };
 
 export default App;
